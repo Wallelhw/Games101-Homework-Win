@@ -83,7 +83,11 @@ void Application::resize(size_t w, size_t h) {
   glOrtho(-half_width, half_width, -half_height, half_height, 1, 0);
 }
 
-void Application::keyboard_event(int key, int event, unsigned char mods) {
+void Application::key_event(char key) {
+    keyboard_event(key, 0, ' ');
+}
+
+void Application::keyboard_event(char key, int event, unsigned char mods) {
   switch (key) {
   case '-':
     if (config.steps_per_frame > 1) {

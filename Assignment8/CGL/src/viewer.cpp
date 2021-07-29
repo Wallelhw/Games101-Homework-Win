@@ -66,6 +66,9 @@ void Viewer::init() {
     exit( 1 );
   }
 
+
+
+
   // create window
   string title = renderer ? "CGL: " + renderer->name() : "CGL";
   window = glfwCreateWindow( DEFAULT_W, DEFAULT_H, title.c_str(), NULL, NULL );
@@ -76,7 +79,7 @@ void Viewer::init() {
   }
 
   // set context
-  glfwMakeContextCurrent( window );
+  glfwMakeContextCurrent(window);
   glfwSwapInterval(1);
 
   // framebuffer event callbacks

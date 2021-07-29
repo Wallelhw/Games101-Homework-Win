@@ -49,10 +49,12 @@ public:
   std::string name();
   std::string info();
 
-  void keyboard_event(int key, int event, unsigned char mods);
+  virtual void key_event(char key) override;
+  void keyboard_event(char key, int event, unsigned char mods);
   // void cursor_event(float x, float y);
   // void scroll_event(float offset_x, float offset_y);
   // void mouse_event(int key, int event, unsigned char mods);
+
 
 private:
   AppConfig config;
