@@ -30,45 +30,52 @@ void Application::init() {
 }
 
 void Application::render() {
-  //Simulation loops
-  for (int i = 0; i < config.steps_per_frame; i++) {
-    ropeEuler->simulateEuler(1 / config.steps_per_frame, config.gravity);
-    ropeVerlet->simulateVerlet(1 / config.steps_per_frame, config.gravity);
-  }
-  // Rendering ropes
-  Rope *rope;
 
-  for (int i = 0; i < 2; i++) {
-    if (i == 0) {
-      glColor3f(0.0, 0.0, 1.0);
-      rope = ropeEuler;
-    } else {
-      glColor3f(0.0, 1.0, 0.0);
-      rope = ropeVerlet;
-    }
+ // OPENGL test station__________________________________________________________________________________________________
 
-    glBegin(GL_POINTS);
-
-    for (auto &m : rope->masses) {
-      Vector2D p = m->position;
-      glVertex2d(p.x, p.y);
-    }
-
+    glBegin();
     glEnd();
 
-    glBegin(GL_LINES);
+// OPENGL end station____________________________________________________________________________________________________
+ //// Simulation loops
+ // for (int i = 0; i < config.steps_per_frame; i++) {
+ //   ropeEuler->simulateEuler(1 / config.steps_per_frame, config.gravity);
+ //   ropeVerlet->simulateVerlet(1 / config.steps_per_frame, config.gravity);
+ // }
+ ////  Rendering ropes
+ // Rope *rope;
 
-    for (auto &s : rope->springs) {
-      Vector2D p1 = s->m1->position;
-      Vector2D p2 = s->m2->position;
-      glVertex2d(p1.x, p1.y);
-      glVertex2d(p2.x, p2.y);
-    }
+ // for (int i = 0; i < 2; i++) {
+ //   if (i == 0) {
+ //     glColor3f(0.0, 0.0, 1.0);
+ //     rope = ropeEuler;
+ //   } else {
+ //     glColor3f(0.0, 1.0, 0.0);
+ //     rope = ropeVerlet;
+ //   }
 
-    glEnd();
+ //   glBegin(GL_POINTS);
 
-    glFlush();
-  }
+ //   for (auto &m : rope->masses) {
+ //     Vector2D p = m->position;
+ //     glVertex2d(p.x, p.y);
+ //   }
+
+ //   glEnd();
+
+ //   glBegin(GL_LINES);
+
+ //   for (auto &s : rope->springs) {
+ //     Vector2D p1 = s->m1->position;
+ //     Vector2D p2 = s->m2->position;
+ //     glVertex2d(p1.x, p1.y);
+ //     glVertex2d(p2.x, p2.y);
+ //   }
+
+ //   glEnd();
+
+ //   glFlush();
+ // }
 }
 
 void Application::resize(size_t w, size_t h) {
